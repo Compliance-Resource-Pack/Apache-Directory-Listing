@@ -50,6 +50,8 @@
 
   $(document).ready(
     function () {
+
+      /* Loads images as thumbnails instead of svg icon */
       // looks for all <a></a>
       $('a').each(function () {
         // check if href is image URL
@@ -59,10 +61,29 @@
           $(this).children("img").attr("src", $(this).attr("href"))
         }
       })
+
+      /* set favicon of the page */
+      setFavicon('https://database.compliancepack.net/images/brand/icons/general/compliance_white.ico')
+      
+      /* set title */
+      document.title = 'Compliance Database'
     }
-  );
+  )
 
   function checkURL(url) {
     return (url.match(/\.(jpe?g|gif|png|ico)$/) != null);
   }
+
+  function setFavicon(src) {
+    let newLink = document.createElement('link')
+    let oldLink = document.getElementById('dynamic-favicon')
+
+    newLink.id = 'dynamic-favicon'
+    newLink.rel = 'shortcut icon'
+    newLink.href = src
+
+    if (oldLink) document.head.removeChild(oldLink)
+    document.head.appendChild(newLink)
+  }
+
 </script>
