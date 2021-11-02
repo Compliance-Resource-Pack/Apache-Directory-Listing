@@ -1,37 +1,17 @@
-# Apache-Directory-Listing
+# How does it looks?
+See it live here: [database.compliancepack.net](https://database.compliancepack.net)
 
-> A directory listing theme for Apache
+# Installation
+1. Go to `/var/www/html` and put everything inside the `html` dir of this repository
+2. Restart Apache:
+  ```sh
+  $ /etc/init.d/apache2 restart
+  ```
 
-'Apache Directory Listing' is a directory listing theme inspired from [Apaxy](https://github.com/AdamWhitcroft/Apaxy) which uses Apache's `mod_autoindex` module.
+# Functionalities
+- Use beautiful `.svg` files for files thumbnails  
+- If the file is an image, it use the image as thumbnail (epic)  
 
-
-## Themes
-
-### Light theme
-
-|          `grid`         |          `table`          |
-|:-----------------------:|:-------------------------:|
-| ![grid](media/grid.png) | ![table](media/table.png) |
-
-### Dark theme
-
-|        `grid-darkmode`       |        `table-darkmode`        |
-|:----------------------------:|:------------------------------:|
-| ![grid](media/grid-dark.png) | ![table](media/table-dark.png) |
-
-
-## Usage
-
-1. Download or clone the repo and copy `directory-listing` directory to the root directory of Apache.
-1. Copy `htaccess.txt` file to the root directory of your server, rename it to `.htaccess`.
-1. Inside the renamed `.htaccess` file
-   - Replace `{LISTING_DIRECTORY}` to the location of `directory-listing` folder on your server.
-   - Replace `{LISTING_STYLE}` to either `grid`, `table`, `grid-darkmode` or `table-darkmode`.
-
-
-## Credits
-* Icons referenced from [File Types Icons Set](https://web.archive.org/web/20161030160003/http://uifest.com/product/file-types-icons-set).
-
-
-## License
-[MIT](license.txt)
+# Bugs
+- If you find any bugs, please use the GitHub bugs tracker of this repository
+- If your image extension isn't supported, please add the extension to the Regular Expression in the `checkURL()` function in the `html/footer.html` file.
