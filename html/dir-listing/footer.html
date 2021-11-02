@@ -1,0 +1,68 @@
+</main>
+
+<!-- SOURCE : https://github.com/ramlmn/Apache-Directory-Listing -->
+<footer>
+  <!--
+    Add any other listing related copyright content here
+  -->
+
+  <em><a href="https://github.com/Compliance-Resource-Pack">Compliance Team</a></em>&nbsp;-&nbsp;<em><a href="https://www.compliancepack.net/">Website</a></em>&nbsp;-&nbsp;<em><a href="https://webapp.compliancepack.net/">Web App</a></em>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+  function joinUntil(array, index, separator) {
+    var result = [];
+
+    for (var i = 0; i <= index; i++) {
+      result.push(array[i]);
+    }
+
+    return result.join(separator);
+  }
+
+  // Make all the icon links unfocusable with tab
+  var iconLinks = document.querySelectorAll('.indexcolicon a');
+  Array.prototype.forEach.call(iconLinks, function(link) {
+    link.setAttribute('tabindex', '-1');
+  });
+
+  var path = document.querySelector('.js-path');
+  var pathParts = location.pathname.split('/');
+
+  // Removing empty strings
+  for (var i = 0; i < pathParts.length;) {
+    if (pathParts[i]) {
+      i++;
+    } else {
+      pathParts.splice(i, 1);
+    }
+  }
+
+  var pathContents = ['<a href="/">/</a>'];
+  Array.prototype.forEach.call(pathParts, function(part, index) {
+    pathContents.push('<a href="/' + joinUntil(pathParts, index, '/') + '">' + decodeURI(part) + '</a>');
+  });
+
+  path.innerHTML = pathContents.join('&rsaquo;');
+
+  /**/
+
+  $(document).ready(
+    function () {
+      // looks for all <a></a>
+      $('a').each(function () {
+        // check if href is image URL
+        if (checkURL($(this).attr("href"))) {
+
+          // if so, changes the child src to the image :)
+          $(this).children("img").attr("src", $(this).attr("href"))
+        }
+      })
+    }
+  );
+
+  function checkURL(url) {
+    return (url.match(/\.(jpe?g|gif|png|ico)$/) != null);
+  }
+</script>
