@@ -1,5 +1,5 @@
 # How does it looks?
-See it live here: [database.compliancepack.net](https://database.compliancepack.net)
+See it live here: [database.faithfulpack.net](https://database.faithfulpack.net)
 
 # Installation
 1. Go to `/var/www/html` and put everything inside the `html` dir of this repository
