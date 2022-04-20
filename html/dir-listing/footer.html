@@ -2,14 +2,9 @@
 
 <!-- SOURCE : https://github.com/ramlmn/Apache-Directory-Listing -->
 <footer>
-  <!--
-    Add any other listing related copyright content here
-  -->
-
   <em><a href="https://github.com/Faithful-Resource-Pack">Faithful Team</a></em>&nbsp;-&nbsp;<em><a href="https://www.faithfulpack.net/">Website</a></em>&nbsp;-&nbsp;<em><a href="https://webapp.faithfulpack.net/">Web App</a></em>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script>
   function joinUntil(array, index, separator) {
     var result = [];
@@ -22,13 +17,13 @@
   }
 
   // Make all the icon links unfocusable with tab
-  var iconLinks = document.querySelectorAll('.indexcolicon a');
+  var iconLinks = document.querySelectorAll(".indexcolicon a");
   Array.prototype.forEach.call(iconLinks, function(link) {
-    link.setAttribute('tabindex', '-1');
+    link.setAttribute("tabindex", "-1");
   });
 
-  var path = document.querySelector('.js-path');
-  var pathParts = location.pathname.split('/');
+  var path = document.querySelector(".js-path");
+  var pathParts = location.pathname.split("/");
 
   // Removing empty strings
   for (var i = 0; i < pathParts.length;) {
@@ -41,45 +36,39 @@
 
   var pathContents = ['<a href="/">/</a>'];
   Array.prototype.forEach.call(pathParts, function(part, index) {
-    pathContents.push('<a href="/' + joinUntil(pathParts, index, '/') + '">' + decodeURI(part) + '</a>');
+    pathContents.push('<a href="/' + joinUntil(pathParts, index, '/') + '">' + decodeURI(part) + "</a>");
   });
 
-  path.innerHTML = pathContents.join('&rsaquo;');
+  path.innerHTML = pathContents.join("&rsaquo;");
 
-  /**/
-
-  $(document).ready(
-    function () {
-
-      /* Loads images as thumbnails instead of svg icon */
+  document.addEventListener("DOMContentLoaded", () => {
+      // Loads images as thumbnails instead of svg icon
       // looks for all <a></a>
-      $('a').each(function () {
-        // check if href is image URL
-        if (checkURL($(this).attr("href"))) {
-
+      const elements = document.querySelectorAll("a")
+      elements.forEach(element => {
+        if (checkURL(element.getAttribute("href"))) {
           // if so, changes the child src to the image :)
-          $(this).children("img").attr("src", $(this).attr("href"))
+          if (element.children[0]) element.children[0].setAttribute("src", element.getAttribute("href"))
         }
       })
 
-      /* set favicon of the page */
-      setFavicon('https://database.faithfulpack.net/images/branding/site/favicon.ico')
+      // set favicon of the page
+      setFavicon("https://database.faithfulpack.net/images/branding/site/favicon.ico")
       
-      /* set title */
-      document.title = 'Faithful Database'
-    }
-  )
+      // set title
+      document.title = "Faithful Database"
+  })
 
   function checkURL(url) {
     return (url.match(/\.(jpe?g|gif|png|ico)$/) != null);
   }
 
   function setFavicon(src) {
-    let newLink = document.createElement('link')
-    let oldLink = document.getElementById('dynamic-favicon')
+    let newLink = document.createElement("link")
+    let oldLink = document.getElementById("dynamic-favicon")
 
-    newLink.id = 'dynamic-favicon'
-    newLink.rel = 'shortcut icon'
+    newLink.id = "dynamic-favicon"
+    newLink.rel = "shortcut icon"
     newLink.href = src
 
     if (oldLink) document.head.removeChild(oldLink)
