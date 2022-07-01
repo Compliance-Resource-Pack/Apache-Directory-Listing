@@ -20,7 +20,7 @@
   var iconLinks = document.querySelectorAll(".indexcolicon a");
   Array.prototype.forEach.call(iconLinks, function(link) {
     link.setAttribute("tabindex", "-1");
-    link.setAttribute("download", true);
+	if (link.href.endsWith(".mcpack")) link.setAttribute("download", "");
   });
 
   var path = document.querySelector(".js-path");
