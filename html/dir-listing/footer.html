@@ -16,11 +16,11 @@
     return result.join(separator);
   }
 
-  // Make all the icon links unfocusable with tab
+  // Make all the icon links not focusable with tab
   var iconLinks = document.querySelectorAll(".indexcolicon a");
   Array.prototype.forEach.call(iconLinks, function(link) {
     link.setAttribute("tabindex", "-1");
-	if (link.href.endsWith(".mcpack")) link.setAttribute("download", "");
+	  if (link.href.endsWith(".mcpack")) link.setAttribute("download", "");
   });
 
   var path = document.querySelector(".js-path");
